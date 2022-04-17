@@ -4,7 +4,10 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+  const newStr = string.replace(/v|z|V|Z/gi, '*');
+  return newStr;
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +19,10 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+  const newStr = string.replace(word, newWord);
+  return newStr;
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +30,10 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+  const result = string.slice(0, length);
+  return result;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +46,18 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+  let counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    let stringItem = string.charAt(i);
+    if (stringItem.toLowerCase().includes(symbol)) {
+      counter++;
+    } else if (stringItem.toUpperCase().includes(symbol)) {
+      counter++;
+    }
+  }
+  return counter;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +74,15 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+  let counter = 0;
+  let lowerSymbol = symbol.toLocaleLowerCase();
+  let lowerString = string.toLowerCase();
+  let pos = lowerString.indexOf(lowerSymbol);
+  while (pos !== -1) {
+    pos = lowerString.indexOf(lowerSymbol, pos + 1);
+    counter++;
+  }
+  return counter;
+};
+
