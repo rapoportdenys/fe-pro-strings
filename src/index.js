@@ -79,9 +79,13 @@ export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
   let lowerSymbol = symbol.toLocaleLowerCase();
   let lowerString = string.toLowerCase();
   let pos = lowerString.indexOf(lowerSymbol);
-  while (pos !== -1) {
+  while (true) {
+    if (pos !== -1){
     pos = lowerString.indexOf(lowerSymbol, pos + 1);
     counter++;
+    } else {
+      break;
+    }
   }
   return counter;
 };
